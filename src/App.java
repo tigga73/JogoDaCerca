@@ -154,10 +154,6 @@ public class App {
                                 } else {
                                     System.out.println("Jogada inválida, por favor tente novamente.");
                                 }
-//                                CASO A JOGADA JÁ TENHA SIDO FEITA, O JOGADOR DEVERÁ JOGAR NOVAMENTE
-                                if (teste1 == true) {
-                                    System.out.println(jogador1.getNome() + " recebe +10 pontos");
-                                }
                             } else {
                                 System.out.println("Jogada inválida, por favor tente novamente.");
                             }
@@ -177,9 +173,6 @@ public class App {
                                     m.imprime();
                                 } else {
                                     System.out.println("Jogada inválida, por favor tente novamente.");
-                                }
-                                if (teste2 == true) {
-                                    System.out.println(jogador2.getNome() + " recebe +10 pontos e pode jogar novamente");
                                 }
                             } else {
                                 System.out.println("Jogada inválida, por favor tente novamente.");
