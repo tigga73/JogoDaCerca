@@ -37,14 +37,19 @@ public class Matriz {
 
 //    METODO QUE CONFERE SE A MATRIZ ESTA COMPLETA
     public boolean confere() {
+        int cont = 0;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (m[i][j] == null) {
-                    return true;
+                    cont++;
                 }
             }
         }
-        return false;
+        if(cont != 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 //    MÉTODO QUE INSERE AS JOGADAS NA MATRIZ BASEADO NOS PONTOS QUE SÃO EXTRAÍDOS DO MÉTODO JOGADA
