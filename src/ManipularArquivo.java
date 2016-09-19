@@ -1,0 +1,232 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Masterchief
+ */
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ManipularArquivo {
+
+//    public void escreverNome(String nome) {
+//        //objeto que cria o diretório do arquivo
+//        File diretorio = new File("Arquivos Jogador");
+//        //verificação se o diretório já esta criado
+//        if (!diretorio.exists()) {
+//            diretorio.mkdir();
+//        }
+//        //objeto que cria o arquivo dentro do diretório
+//        File arquivo = new File("Arquivos Jogador/Jogadores.txt");
+//        //verificação se o arquivo já esta criado
+//        if (!arquivo.exists()) {
+//            try {
+//                arquivo.createNewFile();
+//            } catch (IOException ex) {
+//
+//            }
+//        }
+//        try {
+//            //objeto que faz interação com o arquivo, o parametro é para que seja possível
+//            //continuar escrevendo no arquivo
+//            FileWriter arquivoEscreva = new FileWriter(arquivo, true);
+//            //objeto que faz a escrita no arquivo
+//            BufferedWriter escreva = new BufferedWriter(arquivoEscreva);
+//                   
+//            escreva.write("Nome do Jogador: " + nome);
+//            escreva.newLine();
+//
+//            escreva.close();
+//            arquivoEscreva.close();
+//
+//        } catch (IOException ex) {
+//            System.out.println("Falha na escrita do nome");
+//        }
+//    }
+
+//    public void escreverSenha(String senha) {
+//        File diretorio = new File("Arquivos Jogador");
+//        if (!diretorio.exists()) {
+//            diretorio.mkdir();
+//        }
+//        File arquivo = new File("Arquivos Jogador/Jogadores.txt");
+//        if (!arquivo.exists()) {
+//            try {
+//                arquivo.createNewFile();
+//            } catch (IOException ex) {
+//
+//            }
+//        }
+//        try {
+//            FileWriter arquivoEscreva = new FileWriter(arquivo, true);
+//            BufferedWriter escreva = new BufferedWriter(arquivoEscreva);
+//
+//            //objeto da classe criptografia
+//            Criptografia criptografa = new Criptografia();
+//            //a senha é escrita criptografada no arquivo
+//            escreva.write("Senha: " + criptografa.criptografar(senha));
+//            escreva.newLine();
+//
+//            escreva.close();
+//            arquivoEscreva.close();
+//        } catch (IOException ex) {
+//            System.out.println("Falha na escrita do nome");
+//        }
+//    }
+//
+//    public boolean lerNome(String usuario) {
+//        File diretorio = new File("Arquivos Jogador");
+//        if (!diretorio.exists()) {
+//            diretorio.mkdir();
+//        }
+//        File arquivo = new File("Arquivos Jogador/Jogadores.txt");
+//        if (!arquivo.exists()) {
+//            try {
+//                arquivo.createNewFile();
+//            } catch (IOException ex) {
+//
+//            }
+//        }
+//        try {
+//            //objeto que faz interação com o arquivo
+//            FileReader leitura = new FileReader(arquivo);
+//            //objeto que faz a leitura das linhas do arquivo
+//            BufferedReader leitura_buff = new BufferedReader(leitura);
+//            //string que que recebe a linha
+//            String linha = leitura_buff.readLine();
+//
+//            do {
+//                String[] user = linha.split("Nome do Jogador: ");
+//                for (int i = 0; i < user.length; i++) {
+//                    if (user[i].equals(usuario)) {
+//                        return true;
+//                    }
+//                }
+//                linha = leitura_buff.readLine();
+//            } while (linha != null);
+//        } catch (IOException ex) {
+//
+//        }
+//        return false;
+//    }
+//
+//    public boolean lerSenha(String senha) {
+//        Criptografia criptografa = new Criptografia();
+//        File diretorio = new File("Arquivos Jogador");
+//        if (!diretorio.exists()) {
+//            diretorio.mkdir();
+//        }
+//        File arquivo = new File("Arquivos Jogador/Jogadores.txt");
+//        if (!arquivo.exists()) {
+//            try {
+//                arquivo.createNewFile();
+//            } catch (IOException ex) {
+//
+//            }
+//        }
+//        try {
+//            FileReader leitura = new FileReader(arquivo);
+//            BufferedReader leitura_buff = new BufferedReader(leitura);
+//            String linha = leitura_buff.readLine();
+//            //aqui a senha recebida é criptografada para comparar com a senha já criptografada do arquivo
+//            String senha2 = criptografa.criptografar(senha);
+//            do {
+//                String[] user = linha.split("Senha: ");
+//                for (int i = 0; i < user.length; i++) {
+//                    if (user[i].equals(senha2)) {
+//                        return true;
+//                    }
+//                }
+//                linha = leitura_buff.readLine();
+//            } while (linha != null);//a leitura acontece até o resultado da linha for igual ao recebido pelo método
+//                                    //ou a linha ser igual a null
+//        } catch (IOException ex) {
+//
+//        }
+//        return false;
+//    }
+    
+    public void cadastro(String nome, String senha) {
+        //objeto que cria o diretório do arquivo
+        File diretorio = new File("Arquivos Jogador");
+        //verificação se o diretório já esta criado
+        if (!diretorio.exists()) {
+            diretorio.mkdir();
+        }
+        //objeto que cria o arquivo dentro do diretório
+        File arquivo = new File("Arquivos Jogador/Jogadores.txt");
+        //verificação se o arquivo já esta criado
+        if (!arquivo.exists()) {
+            try {
+                arquivo.createNewFile();
+            } catch (IOException ex) {
+
+            }
+        }
+        try {
+            //objeto que faz interação com o arquivo, o parametro é para que seja possível
+            //continuar escrevendo no arquivo
+            Criptografia c = new Criptografia();
+            FileWriter arquivoEscreva = new FileWriter(arquivo, true);
+            //objeto que faz a escrita no arquivo
+            BufferedWriter escreva = new BufferedWriter(arquivoEscreva);
+            
+            senha = c.criptografar(senha);
+            escreva.write(nome+":"+senha);
+            escreva.newLine();
+
+            escreva.close();
+            arquivoEscreva.close();
+
+        } catch (IOException ex) {
+            System.out.println("Falha na escrita do nome");
+        }
+    }
+    
+    public boolean login(String nome, String senha) {
+        Criptografia criptografa = new Criptografia();
+        File diretorio = new File("Arquivos Jogador");
+        if (!diretorio.exists()) {
+            diretorio.mkdir();
+        }
+        File arquivo = new File("Arquivos Jogador/Jogadores.txt");
+        if (!arquivo.exists()) {
+            try {
+                arquivo.createNewFile();
+            } catch (IOException ex) {
+
+            }
+        }
+        try {
+            FileReader leitura = new FileReader(arquivo);
+            BufferedReader leitura_buff = new BufferedReader(leitura);
+            String linha = leitura_buff.readLine();
+            //aqui a senha recebida é criptografada para comparar com a senha já criptografada do arquivo
+            String senha2 = criptografa.criptografar(senha);
+            do {
+                String[] user = linha.split(":");
+//                for (int i = 0; i < user.length; i++) {
+//                    if (user[i].equals(senha2)) {
+//                        return true;
+//                    }
+//                }
+                if(user[0].equals(nome) && user[1].equals(senha)) {
+                    return true;
+                }
+                linha = leitura_buff.readLine();
+            } while (linha != null);//a leitura acontece até o resultado da linha for igual ao recebido pelo método
+                                    //ou a linha ser igual a null
+        } catch (IOException ex) {
+
+        }
+        return false;
+    }
+}
