@@ -78,6 +78,8 @@ public class Matriz {
                             if(m[i+1][j].equals(" ")) {
                                 m[i+1][j] = Character.toString(letra);
                                 jogador.setRanking(10);
+                                System.out.println(jogador.getNome()+" recebe +10 pontos e pode jogar novamente");
+                                pontuacao(jogador);
                                 return true;
                             }
                         }
