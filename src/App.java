@@ -163,7 +163,6 @@ public class App {
                             }
 //                            CASO O VALOR DA COORDENADA SEJA -1 A JOGADA NÃO É VÁLIDA
                         } while (coordenada[0] == -1 || teste1 == true || existe1 == true);
-
                         do {
                             System.out.println("Digite a coordenada Jogador 2");
                             coo = entrada.next();
