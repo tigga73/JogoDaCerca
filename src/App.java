@@ -43,10 +43,15 @@ public class App {
 
         String coo;
 
+//        VARIAVEIS QUE CONFEREM SE O JOGADOR PONTUOU
         boolean teste1 = false;
         boolean teste2 = false;
+//        VARIAVEIS QUE CONFEREM SE A COORDENADA ESTA VAZIA
         boolean existe1 = false;
         boolean existe2 = false;
+//        VARIAVEIS QUE CONFEREM SE O JOGO CHEGOU AO FIM
+        boolean acabou1 = false;
+        boolean acabou2 = false;
         //Escolha da opção inicial do jogador
         do {
             System.out.println("==========================JogoDaCerca=========================");
@@ -151,46 +156,52 @@ public class App {
                                     m.insere(linha, coluna);
                                     teste1 = m.pontuacao(jogador1);
                                     m.imprime();
+                                    acabou1 = m.confere();
                                 } else {
                                     System.out.println("Jogada inválida, por favor tente novamente.");
-                                }
-//                                CASO A JOGADA JÁ TENHA SIDO FEITA, O JOGADOR DEVERÁ JOGAR NOVAMENTE
-                                if (teste1 == true) {
-                                    System.out.println(jogador1.getNome() + " recebe +10 pontos");
                                 }
                             } else {
                                 System.out.println("Jogada inválida, por favor tente novamente.");
                             }
 //                            CASO O VALOR DA COORDENADA SEJA -1 A JOGADA NÃO É VÁLIDA
-                        } while (coordenada[0] == -1 || teste1 == true || existe1 == true);
+                        } while (coordenada[0] == -1 || teste1 == true && acabou1 != true || existe1 == true);
                         do {
-                            System.out.println("Digite a coordenada Jogador 2");
-                            coo = entrada.next();
-                            coordenada = jogador2.jogada(coo);
-                            if (coordenada[0] != -1) {
-                                linha = coordenada[0];
-                                coluna = coordenada[1];
-                                existe2 = m.existe(linha, coluna);
-                                if (existe2 != true) {
-                                    m.insere(linha, coluna);
-                                    teste2 = m.pontuacao(jogador2);
-                                    m.imprime();
+                            if (acabou1 == false) {
+                                System.out.println("Digite a coordenada Jogador 2");
+                                coo = entrada.next();
+                                coordenada = jogador2.jogada(coo);
+                                if (coordenada[0] != -1) {
+                                    linha = coordenada[0];
+                                    coluna = coordenada[1];
+                                    existe2 = m.existe(linha, coluna);
+                                    if (existe2 != true) {
+                                        m.insere(linha, coluna);
+                                        teste2 = m.pontuacao(jogador2);
+                                        m.imprime();
+                                        acabou2 = m.confere();
+                                    } else {
+                                        System.out.println("Jogada inválida, por favor tente novamente.");
+                                    }
                                 } else {
                                     System.out.println("Jogada inválida, por favor tente novamente.");
                                 }
-                                if (teste2 == true) {
-                                    System.out.println(jogador2.getNome() + " recebe +10 pontos e pode jogar novamente");
-                                }
-                            } else {
-                                System.out.println("Jogada inválida, por favor tente novamente.");
                             }
 //                            CASO O VALOR DA COORDENADA SEJA -1 A JOGADA NÃO É VÁLIDA
-                        } while (coordenada[0] == -1 || teste2 == true || existe2 == true);
+                        } while (coordenada[0] == -1 || teste2 == true && acabou2 != true || existe2 == true);
 
                         /*AS JOGADAS DEVEM CONTINUAR ATÉ QUE NÃO TENHA NENHUMA POSIÇÃO VAZIA NA MATRIZ
                         PRA ISSO O MÉTODO CONFERE*/
                     } while (m.confere() != true);
-
+                    System.out.println("");
+                    System.out.println("O jogo chegou ao fim!");
+                    System.out.println("");
+                    System.out.println(jogador1.getNome()+":"+jogador1.getRanking()+" pontos");
+                    System.out.println(jogador2.getNome()+":"+jogador2.getRanking()+" pontos");
+                    if(jogador1.getRanking() > jogador2.getRanking()) {
+                        System.out.println(jogador1.getNome()+" venceu!");
+                    } else {
+                        System.out.println(jogador2.getNome()+" venceu!");
+                    }
                     break;
                 case 3:
                     System.out.println("Os melhores serão para sempre lembrados aqui.");
