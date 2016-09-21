@@ -40,15 +40,15 @@ public class Matriz {
         int cont = 0;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (m[i][j] == null) {
+                if (m[i][j].equals(" ")) {
                     cont++;
                 }
             }
         }
         if(cont > 0) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
