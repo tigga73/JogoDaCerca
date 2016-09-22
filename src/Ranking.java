@@ -74,29 +74,34 @@ public class Ranking {
         //condição para escrever o primeiro jogador do ranking se o arquivo estiver vazio
         if (cont == 0) {
             vetRanking[0] = player1;
-            cont++;
+            //cont++;
         } else {
             vetRanking[cont] = player1;//Adição do novo jogador campeão para o ranking para comparação com os demais
             cont++;
+            rank.ordenacao(vetRanking, cont);///ordenação do vetor com a chamada do método
         }
-        rank.ordenacao(vetRanking, cont); ///ordenação do vetor com a chamada do método
 
-        for (int i = 0; i < cont - 1; i++) {
-            if (vetRanking[i] != null) {
-                System.out.println(vetRanking[i].nome + ":" + vetRanking[i].ranking);
-            }
-
-        }
         try {
             //objeto que faz interação com o arquivo, o parametro é para que seja possível
             FileWriter arquivoEscreva = new FileWriter(arquivo);
             //objeto que faz a escrita no arquivo
             BufferedWriter escreva = new BufferedWriter(arquivoEscreva);
 
-            for (int i = 0; i < cont - 1; i++) {
-                if (vetRanking[i] != null) {
-                    escreva.write(vetRanking[i].nome + ":" + vetRanking[i].ranking);
-                    escreva.newLine();
+            if (cont == 0) {
+                escreva.write(vetRanking[cont].nome + ":" + vetRanking[cont].ranking);
+            } else if (cont <= 10) {
+                for (int i = 0; i < cont; i++) {
+                    if (vetRanking[i] != null) {
+                        escreva.write(vetRanking[i].nome + ":" + vetRanking[i].ranking);
+                        escreva.newLine();
+                    }
+                }
+            } else if (cont > 10) {
+                for (int i = 0; i < cont - 1; i++) {
+                    if (vetRanking[i] != null) {
+                        escreva.write(vetRanking[i].nome + ":" + vetRanking[i].ranking);
+                        escreva.newLine();
+                    }
                 }
             }
             escreva.close();
