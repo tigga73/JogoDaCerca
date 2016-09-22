@@ -12,11 +12,15 @@ import java.io.IOException;
  */
 public class Jogador {
 
-    private String nome;
-    private int ranking = 0;
+     String nome;
+     int ranking = 0;
 
     public Jogador(String nome) {
         this.nome = nome;
+    }
+
+    Jogador() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getNome() {
