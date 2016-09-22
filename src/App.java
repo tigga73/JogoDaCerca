@@ -20,6 +20,7 @@ public class App {
         Scanner entrada = new Scanner(System.in);
         ManipularArquivo me = new ManipularArquivo();
         Matriz m = new Matriz();
+        Ranking ranki = new Ranking();
 
         int inicio;
         int linha;
@@ -199,12 +200,15 @@ public class App {
                     System.out.println(jogador2.getNome()+":"+jogador2.getRanking()+" pontos");
                     if(jogador1.getRanking() > jogador2.getRanking()) {
                         System.out.println(jogador1.getNome()+" venceu!");
+                        ranki.OrdenarRanking(jogador1);
                     } else {
                         System.out.println(jogador2.getNome()+" venceu!");
+                        ranki.OrdenarRanking(jogador2);
                     }
                     break;
                 case 3:
-                    System.out.println("Os melhores serão para sempre lembrados aqui.");
+                    System.out.println("Os melhores serão para sempre lembrados aqui");
+                    ranki.exibirRanking();
                     break;
                 case 0:
                     System.out.println("Obrigado por conhecer nosso aplicativo, sinta-se a vontade para voltar :D");
