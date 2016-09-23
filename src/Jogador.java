@@ -46,6 +46,12 @@ public class Jogador {
         String coo2 = "";
         int[] coordenada = new int[2];
         int[] coordenadaFalha = new int[1];
+        
+        if (coo.charAt(coo.length()-1) == '-') {
+            coordenadaFalha[0] = -1;
+            return coordenadaFalha;
+        }
+        
 //        VERIFICA SE  EXISTE UM TRAÇO NA COORDENADA PASSADA
         for (int i = 0; i < coo.length(); i++) {
 //            SE O TRAÇO EXISTIR É DADO SPLIT NA COORDENADA PASSADA
