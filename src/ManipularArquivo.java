@@ -76,7 +76,7 @@ public class ManipularArquivo {
             String senha2 = criptografa.criptografar(senha);
             do {
                 String[] user = linha.split(":");
-                if(user[0].equals(nome) && user[1].equals(senha)) {
+                if(user[0].equals(nome) && user[1].equals(senha2)) {
                     return true;
                 }
                 linha = leitura_buff.readLine();
