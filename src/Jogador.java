@@ -19,9 +19,8 @@ public class Jogador {
     public Jogador(String nome) {
         this.nome = nome;
     }
-
-    Jogador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Jogador() {
+        
     }
 
     public String getNome() {
