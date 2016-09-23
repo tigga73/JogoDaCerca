@@ -12,9 +12,10 @@ import java.io.IOException;
  */
 public class Jogador {
 
-     String nome;
-     int ranking = 0;
+    String nome;
+    int ranking = 0;
 
+//    CONSTRUTOR INICIALIZA UM JOGADOR SOMENTO COM O NOME
     public Jogador(String nome) {
         this.nome = nome;
     }

@@ -83,8 +83,9 @@ public class App {
                     //ESCRITA DO LOGIN E SENHA DO JOGADOR 1 NO ARQUIVO
                     me.cadastro(namePlayer1, passPlayer1);
                     System.out.println("Jogador cadastrado com sucesso!");
-                    System.out.println("Deseja cadastrar o próximo jogador? s para avançar, qualquer tecla para sair.");
+                    System.out.println("Deseja cadastrar o próximo jogador? s para avançar ou qualquer tecla+enter para sair.");
                     String continuarCad = entrada.next();
+                    Matriz.clearScreen();
                     switch (continuarCad) {
                         case "s":
                             System.out.println("Por favor cadastre o jogador 2:");
@@ -102,6 +103,7 @@ public class App {
                             passPlayer2 = new String(senha);
 //                            ESCRITA DO LOGIN E SENHA DO JOGADOR 2 NO ARQUIVO
                             me.cadastro(namePlayer2, passPlayer2);
+                            Matriz.clearScreen();
                             System.out.println("Jogador cadastrado com sucesso!");
                             break;
                         case "n":
@@ -122,7 +124,7 @@ public class App {
                             System.out.println("Usuário ou senha incorreto, por favor tente novamente.");
                         }
                     } while (me.login(loginPlayer1, loginPassPlayer1) != true);
-                    System.out.println("Login efetuado com sucesso, bem vindo");
+                    System.out.println("Login efetuado com sucesso");
 //                    LOGIN DO SEGUNDO JOGADOR
                     System.out.println("Faça o login jogador 2");
                     do {
@@ -136,7 +138,8 @@ public class App {
                             System.out.println("Usuário ou senha incorreto, por favor tente novamente.");
                         }
                     } while (me.login(loginPlayer2, loginPassPlayer2) != true);
-                    System.out.println("Login efetuado com sucesso, bem vindo");
+                    Matriz.clearScreen();
+                    System.out.println("Login efetuado com sucesso, bem vindo ao Jogo da Cerca");
                     /*DOIS OBJETOS DA CLASSE JOGADOR SÃO CRIADOS, POIS ELES QUE 
                     IRÃO INTERAGIR COM O MÉTODO JOGADA*/
                     Jogador jogador1 = new Jogador(loginPlayer1);
@@ -145,7 +148,7 @@ public class App {
                     m.imprime();
                     do {
                         do {
-                            System.out.println("Digite a coordenada Jogador 1");
+                            System.out.print("Turno de "+jogador1.getNome()+":");
                             coo = entrada.next();
                             coordenada = jogador1.jogada(coo);
 //                            CASO O VALOR DA COORDENADA SEJA -1 A JOGADA NÃO É VÁLIDA
@@ -155,6 +158,7 @@ public class App {
                                 existe1 = m.existe(linha, coluna);
                                 if (existe1 != true) {
                                     m.insere(linha, coluna);
+                                    Matriz.clearScreen();
                                     teste1 = m.pontuacao(jogador1);
                                     m.imprime();
                                     acabou1 = m.confere();
@@ -165,10 +169,10 @@ public class App {
                                 System.out.println("Jogada inválida, por favor tente novamente.");
                             }
 //                            CASO O VALOR DA COORDENADA SEJA -1 A JOGADA NÃO É VÁLIDA
-                        } while (coordenada[0] == -1 || teste1 == true && acabou1 != true || existe1 == true);
+                        } while (coordenada[0] == -1 || teste1 && !acabou1 || existe1);
                         do {
                             if (acabou1 == false) {
-                                System.out.println("Digite a coordenada Jogador 2");
+                                System.out.print("Turno de "+jogador2.getNome()+":");
                                 coo = entrada.next();
                                 coordenada = jogador2.jogada(coo);
                                 if (coordenada[0] != -1) {
@@ -177,6 +181,7 @@ public class App {
                                     existe2 = m.existe(linha, coluna);
                                     if (existe2 != true) {
                                         m.insere(linha, coluna);
+                                        Matriz.clearScreen();
                                         teste2 = m.pontuacao(jogador2);
                                         m.imprime();
                                         acabou2 = m.confere();
@@ -188,7 +193,7 @@ public class App {
                                 }
                             }
 //                            CASO O VALOR DA COORDENADA SEJA -1 A JOGADA NÃO É VÁLIDA
-                        } while (coordenada[0] == -1 || teste2 == true && acabou2 != true || existe2 == true);
+                        } while (coordenada[0] == -1 || teste2 && !acabou2 || existe2);
 
                         /*AS JOGADAS DEVEM CONTINUAR ATÉ QUE NÃO TENHA NENHUMA POSIÇÃO VAZIA NA MATRIZ
                         PRA ISSO O MÉTODO CONFERE*/
@@ -207,8 +212,10 @@ public class App {
                     }
                     break;
                 case 3:
+                    Matriz.clearScreen();
                     System.out.println("Os melhores serão para sempre lembrados aqui");
                     ranki.exibirRanking();
+                    System.out.println("\n\n\n");
                     break;
                 case 0:
                     System.out.println("Obrigado por conhecer nosso aplicativo, sinta-se a vontade para voltar :D");

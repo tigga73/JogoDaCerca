@@ -25,7 +25,7 @@ public class Matriz {
     public void imprime() {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
-                if(m[i][j].equals("+")) {
+                if (m[i][j].equals("+")) {
                     System.out.print("  ");
                 } else {
                     System.out.print(m[i][j] + " ");
@@ -45,7 +45,7 @@ public class Matriz {
                 }
             }
         }
-        if(cont > 0) {
+        if (cont > 0) {
             return false;
         } else {
             return true;
@@ -60,33 +60,40 @@ public class Matriz {
             m[i][j] = "-";
         }
     }
-    
+
     public boolean existe(int i, int j) {
         return m[i][j].equals("-") || m[i][j].equals("|");
     }
 
-   /* MÉTODO QUE CONFERE SE UM QUADRADO FOI FECHADA E COLOCA A PRIMEIRA LETRA DO JOGADOR 
+    /* MÉTODO QUE CONFERE SE UM QUADRADO FOI FECHADA E COLOCA A PRIMEIRA LETRA DO JOGADOR 
     DENTRO DO QUADRADO PRA MARCAR PONTO*/
     public boolean pontuacao(Jogador jogador) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
                 if (m[i][j].equals("-")) {
-                    if(i == 1 || i == 3 || i == 5){
-                        if(m[i+2][j].equals("-") && m[i+1][j-1].equals("|") && m[i+1][j+1].equals("|")){
+                    if (i == 1 || i == 3 || i == 5) {
+                        if (m[i + 2][j].equals("-") && m[i + 1][j - 1].equals("|") && m[i + 1][j + 1].equals("|")) {
                             String nome = jogador.getNome();
                             char letra = nome.charAt(0);
-                            if(m[i+1][j].equals(" ")) {
-                                m[i+1][j] = Character.toString(letra);
+                            if (m[i + 1][j].equals(" ")) {
+                                m[i + 1][j] = Character.toString(letra);
                                 jogador.setRanking(10);
-                                System.out.println(jogador.getNome()+" recebe +10 pontos e pode jogar novamente");
+                                System.out.println(jogador.getNome() + " recebe +10 pontos e pode jogar novamente");
+//                                RECURSIVIDADE
                                 pontuacao(jogador);
                                 return true;
                             }
                         }
-                    } 
+                    }
                 }
             }
         }
         return false;
+    }
+
+//    FUNÇÃO FINAL OF THE NIGHT QUE LIMPA A TELA
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
