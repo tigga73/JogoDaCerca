@@ -194,7 +194,7 @@ public class App {
                             }
 //                            CASO O VALOR DA COORDENADA SEJA -1 A JOGADA NÃO É VÁLIDA
                         } while (coordenada[0] == -1 || teste2 && !acabou2 || existe2);
-
+                        
                         /*AS JOGADAS DEVEM CONTINUAR ATÉ QUE NÃO TENHA NENHUMA POSIÇÃO VAZIA NA MATRIZ
                         PRA ISSO O MÉTODO CONFERE*/
                     } while (m.confere() != true);
@@ -203,6 +203,7 @@ public class App {
                     System.out.println("");
                     System.out.println(jogador1.getNome()+":"+jogador1.getRanking()+" pontos");
                     System.out.println(jogador2.getNome()+":"+jogador2.getRanking()+" pontos");
+                    m.reset();
                     if(jogador1.getRanking() > jogador2.getRanking()) {
                         System.out.println(jogador1.getNome()+" venceu!");
                         ranki.OrdenarRanking(jogador1);
