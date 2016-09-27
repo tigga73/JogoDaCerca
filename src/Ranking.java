@@ -55,9 +55,9 @@ public class Ranking {
             BufferedReader leitura_buff = new BufferedReader(leitura);
             String linha = leitura_buff.readLine();
             if (linha != null) {
-                Jogador user = new Jogador();
                 while (linha != null) {
-                    if ((!linha.isEmpty()) && (cont < 10)) {  
+                    if ((!linha.isEmpty()) && (cont < 10)) {
+                        Jogador user = new Jogador();
                         String[] line = linha.split(":");
                         user.nome = line[0];
                         user.ranking = Integer.parseInt(line[1]);

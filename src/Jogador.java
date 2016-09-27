@@ -19,8 +19,9 @@ public class Jogador {
     public Jogador(String nome) {
         this.nome = nome;
     }
+
     public Jogador() {
-        
+
     }
 
     public String getNome() {
@@ -46,7 +47,13 @@ public class Jogador {
         int[] coordenada = new int[2];
         int[] coordenadaFalha = new int[1];
         
+//        VERIFICA SE EXISTE UM TRAÇO NO FIM DA COORDENADA
         if (coo.charAt(coo.length()-1) == '-') {
+            coordenadaFalha[0] = -1;
+            return coordenadaFalha;
+        } 
+//        VERIFICA SE EXISTE UM TRAÇO NO INÍCIO DA COORDENADA
+        if (coo.charAt(0) == '-') {
             coordenadaFalha[0] = -1;
             return coordenadaFalha;
         }
