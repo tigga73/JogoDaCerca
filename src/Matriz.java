@@ -1,16 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
+
+/**Classe que possui os tabuleiros do jogo, 
+ * e os métodos de verificação dela
  *
- * @author Masterchief
+ * @author Tiago
  */
 public class Matriz {
 
-//    A MATRIZ É INICIADA COM UM MAIS NA POSIÇÃO 0,0 PARA QUE TODAS AS POSIÇÕES SEJAM PREENCHIDAS
+    /**Matriz principal do jogo, na qual são realizadas as jogadas
+     * 
+     */
     private String[][] m = {
         {"+", "1", "+", "2", "+", "3", "+", "4"},
         {"a", "o", " ", "o", " ", "o", " ", "o"},
@@ -22,6 +21,9 @@ public class Matriz {
         {"d", "o", " ", "o", " ", "o", " ", "o"}
     };
 
+    /**Matriz utilizada para resetar o jogo
+     * 
+     */
     public String[][] m1 = {
         {"+", "1", "+", "2", "+", "3", "+", "4"},
         {"a", "o", " ", "o", " ", "o", " ", "o"},
@@ -33,6 +35,10 @@ public class Matriz {
         {"d", "o", " ", "o", " ", "o", " ", "o"}
     };
 
+    
+    /**Método utilizado para imprimir a matriz na tela
+     * 
+     */
     public void imprime() {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
@@ -46,7 +52,10 @@ public class Matriz {
         }
     }
 
-//    METODO QUE CONFERE SE A MATRIZ ESTA COMPLETA
+    /**Método que confere se a matriz está completa
+     * 
+     * @return 
+     */
     public boolean confere() {
         int cont = 0;
         for (int i = 0; i < 8; i++) {
@@ -63,7 +72,11 @@ public class Matriz {
         }
     }
 
-//    MÉTODO QUE INSERE AS JOGADAS NA MATRIZ BASEADO NOS PONTOS QUE SÃO EXTRAÍDOS DO MÉTODO JOGADA
+    /**MÉTODO QUE INSERE AS JOGADAS NA MATRIZ BASEADO NOS PONTOS QUE SÃO EXTRAÍDOS DO MÉTODO JOGADA
+     * 
+     * @param i
+     * @param j 
+     */
     public void insere(int i, int j) {
         if (j % 2 != 0) {
             m[i][j] = "|";
@@ -72,12 +85,23 @@ public class Matriz {
         }
     }
 
+    /**Método que confere se a cordenada já foi jogada  
+     * 
+     * @param i
+     * @param j
+     * @return 
+     */
     public boolean existe(int i, int j) {
         return m[i][j].equals("-") || m[i][j].equals("|");
     }
 
-    /* MÉTODO QUE CONFERE SE UM QUADRADO FOI FECHADA E COLOCA A PRIMEIRA LETRA DO JOGADOR 
-    DENTRO DO QUADRADO PRA MARCAR PONTO*/
+   /**MÉTODO QUE CONFERE SE UM QUADRADO FOI FECHADA E COLOCA A PRIMEIRA LETRA DO JOGADOR 
+    *DENTRO DO QUADRADO PRA MARCAR PONTO,UTILIZA RECURSIVIDADE PARA REALIZAR A VERIFICAÇÃO
+    * DA PONTUAÇÃO EM OUTROS QUADRANTES DA MATRIZ
+    * 
+    * @param jogador
+    * @return 
+    */
     public boolean pontuacao(Jogador jogador) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
@@ -102,12 +126,17 @@ public class Matriz {
         return false;
     }
 
-//    FUNÇÃO FINAL OF THE NIGHT QUE LIMPA A TELA
+    /**Método que realiza a limpeza da tela do console no windows 
+     * 
+     */
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    /**Método que reseta a matriz do jogo, para uma nova partida
+     * 
+     */
     public void reset() {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,11 +6,22 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**Classe responsável pela ordenação e escrita do ranking do jogo 
+ * em um arquivo txt
+ * 
+ * @author Adriano
+ */
+
 public class Ranking {
 
     public static Ranking rank = new Ranking();
 
-    //Método mara ordenar o vetor de jogadores
+    /**Método que recebe um vetor e o seu tamanho por parametro para realizar 
+     * a ordenação decrescente do seu conteúdo
+     * 
+     * @param vet
+     * @param cont 
+     */
     void ordenacao(Jogador[] vet, int cont) {
         Jogador aux = new Jogador();
         for (int i = 0; i < cont; i++) {
@@ -31,7 +37,13 @@ public class Ranking {
         }
     }
 
-    //Método que le o arquivo salva os jogadores em um vetor, ordena e escreve o ranking
+   /**Método que recebe como parâmetro o jogador campeão do jogo,
+    * lê o arquivo de ranking e escreve os dados em um vetor, adiciona os dados em um vetor
+    * de jogadores, inclui o jogador campeão no vetor e realiza a ordenação do mesmo,
+    * após a ordenação o vetor é escrito novamente no arquivo
+    * 
+    * @param player1 
+    */
     void OrdenarRanking(Jogador player1) {
 
         Jogador[] vetRanking = new Jogador[11];
@@ -111,6 +123,9 @@ public class Ranking {
         }
     }
 
+    /**Método que realiza a leitura do arquivo ranking.txt e escreve o resultado na tela
+     * 
+     */
     void exibirRanking() {
 
         File diretorio = new File("Arquivos Jogador");

@@ -1,17 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Adriano Sena, Tiago Cardoso
- */
+
+
 import java.util.Scanner;
 import java.io.Console;
 import java.util.Arrays;
 
+/**Classe principal do jogo, possui o menu baseado em um loop do-while
+ * e uma estrutura de condição para navegação entre as telas do jogo
+ *
+ * @author Adriano Sena, Tiago Cardoso
+ */
 public class App {
 
     public static void main(String[] args) {
@@ -67,12 +65,13 @@ public class App {
             switch (inicio) {
                 case 1:
                     Matriz.clearScreen();
-                    System.out.println("==========================Cadastro=========================\n");
+                    System.out.println("===============================Cadastro=================================== \n\n");
                     System.out.println("Digite o nome do player 1:");
                     namePlayer1 = entrada.next();
 //                    me.escreverNome(namePlayer1);
                     //Validação da senha do jogador 1
                     do {
+                        System.out.println("A senha deve conter SOMENTE caracteres maiúsculos, minúsculos ou números.\nA senha não deve conter caracteres especiais!\n");
                         System.out.println("Digite a senha do jogador 1:");
                         senha = console.readPassword();
                         System.out.println("Por favor confirme a senha do jogador 1:");
@@ -90,10 +89,12 @@ public class App {
                     Matriz.clearScreen();
                     switch (continuarCad) {
                         case "s":
+                            System.out.println("===============================Cadastro=================================== \n\n");
                             System.out.println("Por favor cadastre o jogador 2:");
                             System.out.println("Digite o nome do player 2:");
                             namePlayer2 = entrada.next();
                             do {
+                                System.out.println("A senha deve conter SOMENTE caracteres maiúsculos, minúsculos ou números.\nA senha não deve conter caracteres especiais!\n");
                                 System.out.println("Digite a senha do jogardor 2:");
                                 senha = console.readPassword();
                                 System.out.println("Por favor confirme a senha do jogador 2:");
@@ -113,9 +114,9 @@ public class App {
                     }
                     break;
                 case 2:
-                    Matriz.clearScreen();
-                    System.out.println("==========================Login=========================\n");
 //                    lOGIN DO PRIMEIRO JOGADOR
+                    Matriz.clearScreen();
+                    System.out.println("==========================Login========================= \n\n");
                     System.out.println("Faça o login jogador 1");
                     do {
                         System.out.println("Usuário:");
@@ -128,8 +129,10 @@ public class App {
                             System.out.println("Usuário ou senha incorreto, por favor tente novamente.");
                         }
                     } while (me.login(loginPlayer1, loginPassPlayer1) != true);
+                    Matriz.clearScreen();
                     System.out.println("Login efetuado com sucesso");
 //                    LOGIN DO SEGUNDO JOGADOR
+                    System.out.println("==========================Login========================= \n\n");
                     System.out.println("Faça o login jogador 2");
                     do {
                         System.out.println("Usuário:");
@@ -153,7 +156,7 @@ public class App {
                     m.imprime();
                     do {
                         do {
-                            System.out.print("Turno de "+jogador1.getNome()+":");
+                            System.out.print("Turno de " + jogador1.getNome() + ":");
                             coo = entrada.next();
                             coordenada = jogador1.jogada(coo);
 //                            CASO O VALOR DA COORDENADA SEJA -1 A JOGADA NÃO É VÁLIDA
@@ -177,7 +180,7 @@ public class App {
                         } while (coordenada[0] == -1 || teste1 && !acabou1 || existe1);
                         do {
                             if (acabou1 == false) {
-                                System.out.print("Turno de "+jogador2.getNome()+":");
+                                System.out.print("Turno de " + jogador2.getNome() + ":");
                                 coo = entrada.next();
                                 coordenada = jogador2.jogada(coo);
                                 if (coordenada[0] != -1) {
@@ -206,20 +209,21 @@ public class App {
                     System.out.println("");
                     System.out.println("O jogo chegou ao fim!");
                     System.out.println("");
-                    System.out.println(jogador1.getNome()+":"+jogador1.getRanking()+" pontos");
-                    System.out.println(jogador2.getNome()+":"+jogador2.getRanking()+" pontos");
+                    System.out.println(jogador1.getNome() + ":" + jogador1.getRanking() + " pontos");
+                    System.out.println(jogador2.getNome() + ":" + jogador2.getRanking() + " pontos");
                     m.reset();
-                    if(jogador1.getRanking() > jogador2.getRanking()) {
-                        System.out.println(jogador1.getNome()+" venceu!");
+                    if (jogador1.getRanking() > jogador2.getRanking()) {
+                        System.out.println(jogador1.getNome() + " venceu!");
                         ranki.OrdenarRanking(jogador1);
                     } else {
-                        System.out.println(jogador2.getNome()+" venceu!");
+                        System.out.println(jogador2.getNome() + " venceu!");
                         ranki.OrdenarRanking(jogador2);
                     }
                     break;
                 case 3:
                     Matriz.clearScreen();
-                    System.out.println("Os melhores serão para sempre lembrados aqui");
+                    System.out.println("==========================Ranking========================= \n\n");
+                    System.out.println("Os melhores serão para sempre lembrados aqui \n\n");
                     ranki.exibirRanking();
                     System.out.println("\n\n\n");
                     break;

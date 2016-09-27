@@ -1,43 +1,66 @@
 
 import java.io.IOException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
+ * Classe que contem o registro jogador que será utilzado no jogo, o jogador
+ * possui o nome e a pontuaçaõ no jogo
  *
- * @author MARDOM
+ * @author Tiago
  */
 public class Jogador {
 
     String nome;
     int ranking = 0;
 
-//    CONSTRUTOR INICIALIZA UM JOGADOR SOMENTO COM O NOME
+    /**Construtor que inicializa um jogador somente com o nome
+     *
+     * @param nome
+     */
+    
     public Jogador(String nome) {
         this.nome = nome;
     }
 
+    /**Construtor padrão da classe jogador
+     *
+     */ 
+    
     public Jogador() {
 
     }
+    
+    /**Método que retorna o nome do jogador
+     * 
+     * @return nome 
+     */
 
     public String getNome() {
         return nome;
     }
 
+    /**Método que retorna o ranking do jogador
+     * 
+     * @return ranking
+     */
     public int getRanking() {
         return ranking;
     }
 
+    /**Método que atribui pontos ao jogador a medida que ele fecha os quadrados
+     * funcionando como um acumulador de pontos
+     * 
+     * @param ranking 
+     */
     public void setRanking(int ranking) {
         this.ranking += ranking;
     }
 
-    /*ESTE MÉTODO RETORNA UM VETOR DE 2 POSIÇÕES QUE CONTÉM A LINHA E A COLUNA 
-    PASSADA PELO JOGADOR NA APLICAÇÃO*/
+    /**ESTE MÉTODO RETORNA UM VETOR DE 2 POSIÇÕES QUE CONTÉM A LINHA E A COLUNA 
+     *PASSADA PELO JOGADOR NA APLICAÇÃO
+     * 
+     * @param coo
+     * @return 
+     */
     public int[] jogada(String coo) {
         boolean split = false;
         char[] traco = {'-'};
@@ -46,18 +69,18 @@ public class Jogador {
         String coo2 = "";
         int[] coordenada = new int[2];
         int[] coordenadaFalha = new int[1];
-        
+
 //        VERIFICA SE EXISTE UM TRAÇO NO FIM DA COORDENADA
-        if (coo.charAt(coo.length()-1) == '-') {
+        if (coo.charAt(coo.length() - 1) == '-') {
             coordenadaFalha[0] = -1;
             return coordenadaFalha;
-        } 
+        }
 //        VERIFICA SE EXISTE UM TRAÇO NO INÍCIO DA COORDENADA
         if (coo.charAt(0) == '-') {
             coordenadaFalha[0] = -1;
             return coordenadaFalha;
         }
-        
+
 //        VERIFICA SE  EXISTE UM TRAÇO NA COORDENADA PASSADA
         for (int i = 0; i < coo.length(); i++) {
 //            SE O TRAÇO EXISTIR É DADO SPLIT NA COORDENADA PASSADA

@@ -1,13 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Masterchief
- */
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,7 +7,20 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**Classe que manipula o arquivo de texto com a escrita do cadastro 
+ * e leitura do arquivo para verificação no login
+ *
+ * @author Adriano, Tiago
+ */
+
 public class ManipularArquivo {
+    
+    /**Método que recebe o nome e a senha do jogador cadastrado no jogo
+     * e escreve os dados no arquivo 
+     * 
+     * @param nome
+     * @param senha 
+     */
     
     public void cadastro(String nome, String senha) {
         //objeto que cria o diretório do arquivo
@@ -54,6 +59,15 @@ public class ManipularArquivo {
         }
     }
     
+    /**Método que efetua a leitura do arquivo para verificação de login
+     * e retorna um boolean para o jogo indicando que o login foi validado 
+     * ou não foi validado
+     * 
+     * @param nome
+     * @param senha
+     * @return Boolean  
+     */
+    
     public boolean login(String nome, String senha) {
         Criptografia criptografa = new Criptografia();
         File diretorio = new File("Arquivos Jogador");
@@ -65,7 +79,7 @@ public class ManipularArquivo {
             try {
                 arquivo.createNewFile();
             } catch (IOException ex) {
-
+                System.out.println("Erro na leitura");
             }
         }
         try {
