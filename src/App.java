@@ -66,6 +66,8 @@ public class App {
             //Caso para decidir a ação inicial do jogador
             switch (inicio) {
                 case 1:
+                    Matriz.clearScreen();
+                    System.out.println("==========================Cadastro=========================\n");
                     System.out.println("Digite o nome do player 1:");
                     namePlayer1 = entrada.next();
 //                    me.escreverNome(namePlayer1);
@@ -111,6 +113,8 @@ public class App {
                     }
                     break;
                 case 2:
+                    Matriz.clearScreen();
+                    System.out.println("==========================Login=========================\n");
 //                    lOGIN DO PRIMEIRO JOGADOR
                     System.out.println("Faça o login jogador 1");
                     do {
