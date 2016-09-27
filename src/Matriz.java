@@ -22,6 +22,17 @@ public class Matriz {
         {"d", "o", " ", "o", " ", "o", " ", "o"}
     };
 
+    public String[][] m1 = {
+        {"+", "1", "+", "2", "+", "3", "+", "4"},
+        {"a", "o", " ", "o", " ", "o", " ", "o"},
+        {"+", " ", " ", " ", " ", " ", " ", " "},
+        {"b", "o", " ", "o", " ", "o", " ", "o"},
+        {"+", " ", " ", " ", " ", " ", " ", " "},
+        {"c", "o", " ", "o", " ", "o", " ", "o"},
+        {"+", " ", " ", " ", " ", " ", " ", " "},
+        {"d", "o", " ", "o", " ", "o", " ", "o"}
+    };
+
     public void imprime() {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
@@ -95,5 +106,13 @@ public class Matriz {
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    public void reset() {
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[i].length; j++) {
+                m[i][j] = m1[i][j];
+            }
+        }
     }
 }

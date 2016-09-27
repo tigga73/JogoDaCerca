@@ -140,6 +140,7 @@ public class App {
                     } while (me.login(loginPlayer2, loginPassPlayer2) != true);
                     Matriz.clearScreen();
                     System.out.println("Login efetuado com sucesso, bem vindo ao Jogo da Cerca");
+                    System.out.println("\nInstruções: as jogadas são realizadas da esquerda para a direita ou de cima para baixo,\npor exemplo: a1-a2 ou a1-b1\nNão esqueça de sempre usar o hífen(-) pois é ele que divide a coordenada da sua jogada.\nÉ isso, bom jogo e boa sorte.\n");
                     /*DOIS OBJETOS DA CLASSE JOGADOR SÃO CRIADOS, POIS ELES QUE 
                     IRÃO INTERAGIR COM O MÉTODO JOGADA*/
                     Jogador jogador1 = new Jogador(loginPlayer1);
@@ -203,6 +204,7 @@ public class App {
                     System.out.println("");
                     System.out.println(jogador1.getNome()+":"+jogador1.getRanking()+" pontos");
                     System.out.println(jogador2.getNome()+":"+jogador2.getRanking()+" pontos");
+                    m.reset();
                     if(jogador1.getRanking() > jogador2.getRanking()) {
                         System.out.println(jogador1.getNome()+" venceu!");
                         ranki.OrdenarRanking(jogador1);
